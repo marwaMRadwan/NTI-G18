@@ -14,10 +14,24 @@ const add = (req, res)=>{
         userTypes
     })
 }
+const addPostMethod= (req, res)=>{
+    userTypes = ["user", "admin"]
+    res.render("addPost", {
+        pageTitle:"Add User - User App",
+        userTypes
+    })
+}
 const addLogicGet = (req,res)=>{
     // const user = req.query
     // user.id=Date.now()
     const user = { id:Date.now(), ...req.query } 
+    const data = dealWithData.readFromJSON("database/user.json")
+    data.push(user)
+    dealWithData.writeToJSON(data, "database/user.json")
+    res.redirect("/")
+}
+const addPostMethodLogic = (req,res)=>{
+    const user = { id:Date.now(), ...req.body } 
     const data = dealWithData.readFromJSON("database/user.json")
     data.push(user)
     dealWithData.writeToJSON(data, "database/user.json")
@@ -39,4 +53,6 @@ const delUser =  (req,res)=>{
     dealWithData.writeToJSON(afterDel, "database/user.json")
     res.redirect("/")
 }
-module.exports = { home, add, single, addLogicGet, delUser }
+
+
+module.exports = { home, add, single, addLogicGet, delUser, addPostMethod, addPostMethodLogic }
