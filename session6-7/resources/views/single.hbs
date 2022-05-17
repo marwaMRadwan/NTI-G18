@@ -1,0 +1,28 @@
+{{>header}}
+{{>navbar}}
+<section class="container my-4">
+    <h3 class="text-center text-primary">User Data</h3>
+    {{#unless user}}
+    <div class="alert alert-danger">
+        No User Data Found
+    </div>
+    {{else}}
+    <table class="table table-stripped">
+        <thead class="alert alert-primary p-3">
+            <tr>
+                <th>ID: {{user.id}}</th>
+                <th>name: {{user.name}}</th>
+            </tr>
+            <tr>
+                <td>email: {{user.email}}</td>
+                <td>phone: {{user.phone}}</td>
+            </tr>
+            <tr>
+                <td>user type: {{user.userType}}</td>
+                <td>Age: {{user.age}}</td>
+            </tr>
+        </thead>
+    </table>
+    {{/unless}}
+</section>
+{{>footer}}
