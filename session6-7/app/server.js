@@ -12,8 +12,8 @@ hbs.registerPartials(path.join(__dirname, "../resources/layouts"))
 
 // urlEncoded
 app.use(express.urlencoded({extended:true}))
-
 const userRoutes = require('../routes/user.routes')
 app.use(userRoutes)
-
+app.get("*", (req,res)=>res.render("err404", {pageTitle:"not found"}))
+app.post("*", (req,res)=>res.render("err404", {pageTitle:"not found"}))
 module.exports = app

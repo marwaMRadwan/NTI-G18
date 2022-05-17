@@ -53,6 +53,21 @@ const delUser =  (req,res)=>{
     dealWithData.writeToJSON(afterDel, "database/user.json")
     res.redirect("/")
 }
-
-
-module.exports = { home, add, single, addLogicGet, delUser, addPostMethod, addPostMethodLogic }
+const editUser = (req,res)=>{
+    const user = dealWithData.readFromJSON("database/user.json").find(d=> d.id == req.params.id)
+    res.render("edit",
+    { 
+        pageTitle:"user Data", 
+        user,
+        userTypes:["admin", "user"]
+    }
+    )    
+}
+const editUserLogic = (req,res)=>{
+    const data = dealWithData.readFromJSON("database/user.json")
+    const userIndex = data.findIndex(d=> d.id == req.params.id)
+    data[userIndex] = {...req.body, id:data[userIndex].id}
+    dealWithData.writeToJSON(data, "database/user.json")
+    res.redirect(`/users/${data[userIndex].id}`)
+}
+module.exports = { editUser, home, add, single, addLogicGet, delUser, addPostMethod, addPostMethodLogic , editUserLogic}

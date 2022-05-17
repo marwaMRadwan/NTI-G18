@@ -13,4 +13,9 @@ router.get("/addPostMethod", userController.addPostMethod)
 router.post("/addPostMethod", userController.addPostMethodLogic)
 
 router.get("/users/del/:id",userController.delUser)
+
+router.get("/users/edit/:id",userController.editUser)
+router.post("/users/edit/:id",userController.editUserLogic)
+
+
 module.exports = router
