@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mongodb": "^4.6.0"
+  },
+  "name": "session8",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
