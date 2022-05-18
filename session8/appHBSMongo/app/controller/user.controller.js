@@ -1,4 +1,5 @@
 const dbCon = require('../../database/connetDB')
+const ObjectId = require("mongodb").ObjectId
 class User{
     static add= (req,res)=>{
         res.render("add", {pagetTitle:"add new user"})
@@ -13,10 +14,34 @@ class User{
         })
     }
     static showAll= (req,res)=>{
-        res.render("all", {pagetTitle:"add new user"})
+        dbCon((err, db)=>{
+            if(err) res.send(err)
+            db.collection("data").find().toArray((error, users)=>{
+                if(error) res.send(error)
+                res.render("all", {
+                    pagetTitle:"add new user", 
+                    users,
+                    hasUsers: users.length
+                })
+            })
+
+        })
     }
     static showSingle= (req,res)=>{
-        res.render("single", {pagetTitle:"add new user"})
+        dbCon((err, db)=>{
+            if(err) res.send(err)
+            db.collection("data").findOne({_id: new ObjectId(req.params.id)}, 
+                (error, user)=>{
+                if(error) res.send(error)
+                console.log(user)
+                res.render("single", {
+                    pagetTitle:"add new user", 
+                    user
+                })
+            })
+
+        })
+
     }
     static edit= (req,res)=>{
         res.render("edit", {pagetTitle:"add new user"})
