@@ -1,4 +1,3 @@
-// const dbCon = require('../../database/connetDB')
 const userModel = require('../../database/models/user.model')
 class User{
     static add= (req,res)=>{
@@ -6,6 +5,7 @@ class User{
     }
     static addLogic= async(req,res)=>{
         try{        
+            // const user = new userModel({...req.body, createdBy:"", ....})
             const user = new userModel(req.body) //{name:fname, age:myage}
             await user.save()
             res.redirect("/")
@@ -75,7 +75,6 @@ class User{
         catch(e){
             res.render("err404", {pageTitle:"error in db", errMsg:e.message})
         }
-
     }
     static del= async(req,res)=>{
         try{
