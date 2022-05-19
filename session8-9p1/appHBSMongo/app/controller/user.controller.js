@@ -45,8 +45,7 @@ class User{
                 res.render('err404',
                 {pagetTitle:"invalid id",errMsg:"invalid id format"}
                 )
-            }
-            
+            }  
         })
     }
 
@@ -74,10 +73,26 @@ class User{
         // res.render("edit", {pagetTitle:"add new user"})
     }
     static editLogic= (req,res)=>{
-        res.send("editLogic") 
+        dbCon((err, db)=>{
+            if(err) res.render("err404", {pageTitle:"database error", errMsg:"database error"})
+            db.collection("data").updateOne(
+                {_id:new ObjectId(req.params.id)},
+                {$set: req.body} //$inc:{age:10}
+            )
+            .then(()=>res.redirect(`/show/${req.params.id}`))
+            .catch((e)=>{res.render("err404", {pageTitle:"err in update", errMsg:e.message})})
+            
+        })        
     }
     static del= (req,res)=>{
-        res.send("delete")
-    }
+        dbCon((err, db)=>{
+            if(err) res.render("err404", {pageTitle:"database error", errMsg:"database error"})
+            db.collection("data").deleteOne(
+                {_id:new ObjectId(req.params.id)}
+            )
+            .then(()=>res.redirect(`/`))
+            .catch((e)=>{res.render("err404", {pageTitle:"err in update", errMsg:e.message})})
+            
+        })     }
 }
 module.exports = User
