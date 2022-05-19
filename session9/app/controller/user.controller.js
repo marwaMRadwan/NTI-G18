@@ -49,7 +49,6 @@ class User{
             })
         }
     }
-        
     static edit= async(req,res)=>{
         try{
             const user = await userModel.findById(req.params.id)
@@ -65,28 +64,27 @@ class User{
             })
         }
     }
-    static editLogic= (req,res)=>{
-                            // dbCon((err, db)=>{
-                                //     if(err) res.render("err404", {pageTitle:"database error", errMsg:"database error"})
-                                //     db.collection("data").updateOne(
-                                    //         {_id:new ObjectId(req.params.id)},
-                                    //         {$set: req.body} //$inc:{age:10}
-                                    //     )
-                                    //     .then(()=>res.redirect(`/show/${req.params.id}`))
-                                    //     .catch((e)=>{res.render("err404", {pageTitle:"err in update", errMsg:e.message})})
-                                    
-                                    // })        
+    static editLogic= async(req,res)=>{
+        try{
+            const user = await userModel.findByIdAndUpdate(req.params.id, req.body)
+            res.redirect(`/show/${user._id}`)
+            // const user = await userModel.findById(req.params.id)
+            // user.name="x"
+            // await user.save()
+        }
+        catch(e){
+            res.render("err404", {pageTitle:"error in db", errMsg:e.message})
+        }
+
     }
-    static del= (req,res)=>{
-                                    // dbCon((err, db)=>{
-                                        //     if(err) res.render("err404", {pageTitle:"database error", errMsg:"database error"})
-                                        //     db.collection("data").deleteOne(
-        //         {_id:new ObjectId(req.params.id)}
-        //     )
-        //     .then(()=>res.redirect(`/`))
-        //     .catch((e)=>{res.render("err404", {pageTitle:"err in update", errMsg:e.message})})
-        
-        // })     
+    static del= async(req,res)=>{
+        try{
+            await userModel.findByIdAndDelete(req.params.id)
+            res.redirect("/")
+        }
+        catch(e){
+            res.render("err404", {pageTitle:"error in db", errMsg:e.message})
+        }
     }
     }
     module.exports = User
