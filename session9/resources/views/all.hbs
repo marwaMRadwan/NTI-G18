@@ -1,0 +1,28 @@
+{{>header}}
+<table class="table table-stripped">
+    <thead>
+        <th>id</th>
+        <th>name</th>
+        <th>actions</th>
+    </thead>
+    <tbody>
+        {{#if hasUsers}}
+        {{#each users}}
+        <tr>
+            <td>{{this._id}}</td>
+            <td>{{this.name}}</td>
+            <td>
+                <a href="/show/{{this._id}}" class="btn btn-primary">Show</a>
+                <a href="/edit/{{this._id}}" class="btn btn-warning">Edit</a>
+                <a href="/delete/{{this._id}}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+        {{else}}
+        <tr class="alert alert-danger">
+            <td colspan="3">No Users yet</td>
+        </tr>
+        {{/if}}
+    </tbody>
+</table>
+{{>footer}}

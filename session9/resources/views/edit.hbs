@@ -1,0 +1,26 @@
+{{>header}}
+<h4>Edit user Data</h4>
+{{#if user}}
+<form method="post">
+    <div class="mb-3">
+        <input name="_id" placeholder="_id" class="form-control" value="{{user._id}}" disabled>
+    </div>
+    <div class="mb-3">
+        <input name="name" placeholder="name" class="form-control" value="{{user.name}}">
+    </div>
+    <div class="mb-3">
+        <input name="age" placeholder="age" class="form-control"  value="{{user.age}}">
+    </div>
+    <div class="mb-3">
+        <input name="email" placeholder="email" class="form-control"  value="{{user.email}}">
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary">Edit User</button>
+    </div>
+</form>
+{{else}}
+<div class="alert alert-danger">
+    User Not Found
+</div>
+{{/if}}
+{{>footer}}
