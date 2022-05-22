@@ -1,4 +1,0 @@
-npm init --y
-npm i express dotenv validator hbs
-
-package.json => scripts => start => "nodemon index"

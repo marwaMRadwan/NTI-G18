@@ -2,7 +2,7 @@ customers => name, accNum, Balance, transactions => [{transactionType:"add", val
 
 name, balance => { name:"", balance:"", transactions:[], id:777}
 show, addTranacs=> select(add,withdraw), value
-
+{t:"", v:""}
 add user
 show all
 single

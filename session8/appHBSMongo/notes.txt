@@ -1,2 +1,0 @@
-express, path, mongodb, dotenv
-name, age, email, password

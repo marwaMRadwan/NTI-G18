@@ -9,7 +9,7 @@ class User{
         dbCon((err, db)=>{
             if(err) res.send(err)
             db.collection("data").insertOne(user)
-            .then(()=> res.redirect("/"))
+            .then((r)=> res.redirect("/"))
             .catch((e)=> res.send(e))
         })
     }
