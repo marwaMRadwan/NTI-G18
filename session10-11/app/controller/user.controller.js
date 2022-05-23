@@ -62,7 +62,6 @@ class User{
         }
         catch(e){
             res.status(500).send({apiStatus:false, data:e.message, message:"invalid login"})
-
         }
     } 
     static me = async(req,res)=>{
