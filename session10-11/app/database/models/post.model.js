@@ -23,7 +23,6 @@ const PostSchema = mongoose.Schema({
     file:{
         type:String,
         required: function(){return this.postType != 'text'}
-
     }
 },{timeStamps:true})
 const Post = mongoose.model("Post", PostSchema)
