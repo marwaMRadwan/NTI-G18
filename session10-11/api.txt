@@ -1,0 +1,14 @@
+users
+register => send email, encrypt password
+login
+logout
+edit profile
+change pImage => as file
+change status
+
+posts=> 
+if login (middleware)
+- add
+- edit his posts
+-show all posts (all, his)
+- delete his posts
