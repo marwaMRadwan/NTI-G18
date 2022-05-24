@@ -172,10 +172,11 @@ class User{
     }
     static changeImage =async(req,res)=>{
         try{
-            const filename= req.file.path +(path.extname(req.file.originalname)).toLowerCase()
-            fs.rename(req.file.path, filename, ()=>{})
+            // const filename= req.file.path +(path.extname(req.file.originalname)).toLowerCase()
+            // fs.rename(req.file.path, filename, ()=>{})
             //req.file => originalname
-            req.user.image = filename
+            // req.user.image = filename
+            req.user.image = req.file.path
             await req.user.save()
             res.send({
                 apiStatus:true,
