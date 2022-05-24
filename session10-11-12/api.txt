@@ -1,14 +1,15 @@
 users
-register => send email, encrypt password
-login
-logout
+register => send email, encrypt password => done
+login => done
+logout (all devices, only current device)
+edit password(old password, new password)
 edit profile
 change pImage => as file
-change status
+activate account=>
 
 posts=> 
 if login (middleware)
-- add
+- add => done
 - edit his posts
--show all posts (all, his)
+-show all posts (all, his) => done
 - delete his posts
