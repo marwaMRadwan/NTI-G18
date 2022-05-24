@@ -85,7 +85,6 @@ userSchema.virtual('myPosts', {
     localField: "_id",
     foreignField: "userId"
 })
-//toJSON
 userSchema.methods.toJSON = function(){
     const user = this.toObject()
     delete user.password
@@ -93,17 +92,15 @@ userSchema.methods.toJSON = function(){
     delete user.tokens
     return user
 }
-//pre
 userSchema.pre("save", async function(){
     const userData = this
     if(userData.isModified("password")) 
         userData.password = await bcrypt.hash(userData.password, 10)
 })
-//login
 userSchema.statics.loginUser = async(email, password)=>{
     const user = await User.findOne({email})
     if(!user) throw new Error("invalid email")
-    const isValid = await bcrypt.compare(password, user.password)
+    const isValid = await user.checkPass(password)
     if(!isValid) throw new Error("invalid password")
     return user
 }
@@ -113,6 +110,11 @@ userSchema.methods.generateToken = async function(){
     user.tokens = user.tokens.concat( { token } ) //{_id:'', iat:1202}
     await user.save()
     return token
+}
+userSchema.methods.checkPass = async function(current){
+    user = this
+    const isValid = await bcrypt.compare(current, user.password)
+    return isValid
 }
 const User = mongoose.model("User",userSchema)
 module.exports = User
