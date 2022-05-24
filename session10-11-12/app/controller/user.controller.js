@@ -1,5 +1,7 @@
 const userModel = require("../database/models/user.model")
 const sendEmail = require("../helper/sendEmail.helper")
+const path = require("path")
+const fs = require("fs")
 class User{
     static register = async(req,res)=>{
         try{
@@ -152,13 +154,35 @@ class User{
 
     }
     static activateWithoutLogin =async(req,res)=>{
-        try{}
+        try{
+            const user = await userModel.loginUser(req.body.email, req.body.password)
+//            if(!user) throw new Error("invalid")
+            if(user.status) throw new Error("alerady activated")
+            user.status=true
+            await user.save()
+            res.status(200).send({
+                apiStatus:true,
+                message:"updated",
+                data:"updated"
+            })
+        }
         catch(e){
             res.status(500).send({ apiStatus:false, data:e.message, message:"error in fetching" })
         }
     }
     static changeImage =async(req,res)=>{
-        try{}
+        try{
+            const filename= req.file.path +(path.extname(req.file.originalname)).toLowerCase()
+            fs.rename(req.file.path, filename, ()=>{})
+            //req.file => originalname
+            req.user.image = filename
+            await req.user.save()
+            res.send({
+                apiStatus:true,
+                data:req.user,
+                message:"updated"
+            })
+        }
         catch(e){
             res.status(500).send({ apiStatus:false, data:e.message, message:"error in fetching" })
         }

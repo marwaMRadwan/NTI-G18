@@ -10,6 +10,11 @@ app.use( express.urlencoded( { extended:true } ) )
 app.use( express.json() )
 app.use('/user',userRoutes) //   /=> /user/
 app.use('/post',postRoutes)
+// const multer  = require('multer')
+// const upload = multer({ dest: 'uploads/' })
+// app.post('/profile', upload.single('avatar'), function (req, res, next) {
+//   res.send(req.file)
+// })
 app.all("*", (req,res)=>{
     res.status(404).send({ error: "invalid url segment", apiStautus: false })
 })
