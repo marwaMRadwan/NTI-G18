@@ -1,0 +1,5 @@
+-- install angular cli ==> npm intall -g @angular/cli
+-- create angular app ==> ng new app-Name
+-- create components ==> ng g c components/navbar
+-- data-binding ==> one way binding  ==> interpolation , property binding
+                
