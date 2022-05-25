@@ -1,0 +1,8 @@
+                        unknown   
+undefined <-- void <---- any  --> null
+                          |
+    boolean   number   bigint   string    symbol   object    
+                enum              enum              array=> tuple, function construsctor
+                number
+
+                never

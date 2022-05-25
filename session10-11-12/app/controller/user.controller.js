@@ -92,7 +92,9 @@ class User{
     }
     static allUsers = async(req,res)=>{
         try{
-            const users = await userModel.find()
+            const limitCount = Number(req.params.limitCount)
+            const skipCount = Number(req.params.pageNum)*limitCount
+            const users = await userModel.find().skip(skipCount).limit(limitCount)
             res.status(200).send({
                 apiStatus:true,
                 data:users,

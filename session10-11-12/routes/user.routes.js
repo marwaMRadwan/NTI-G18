@@ -14,6 +14,6 @@ router.patch('/activate', auth, user.activate)
 router.patch('/activateWithoutLogin', user.activateWithoutLogin)
 router.patch('/changeImage', auth, upload.single('userImg'), user.changeImage)
 
-router.get("/all", auth, user.allUsers)
+router.get("/all/:pageNum/:limit", auth, user.allUsers)
 router.get("/all/:id", user.singleUser)
 module.exports = router
