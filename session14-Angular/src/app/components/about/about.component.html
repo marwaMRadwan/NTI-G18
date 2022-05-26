@@ -1,0 +1,30 @@
+<h1 [style.background]="'lightgray'">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, dolor.</h1>
+
+<h2 [style.color]="status==true ? red : 'green' ">Lorem ipsum dolor sit amet.</h2>
+
+<div [style.color]="divColor()">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, fugiat.
+</div>
+
+
+<input type="text" class="form-control w-50" (input)="inputValue($event)">
+{{inputVal}}
+
+<h2>{{headingText}}</h2>
+
+<button (click)="headingText = 'Angular'" class="btn btn-primary">change Color</button>
+
+
+<input placeholder="enter your Name  " class="form-control w-50"
+ #nameInput (keyup.control.enter)="showInputValue(nameInput)">
+
+{{nameInput.value}}
+
+
+<button class="btn btn-primary">-</button> 
+<p class="d-inline mx-4">0</p>
+<button class="btn btn-primary">+</button>
+
+
+
+

@@ -1,0 +1,29 @@
+
+    <div class="h2 text-danger " *ngIf="flag">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, molestiae?
+    </div>
+    
+    <div 
+    class="h2 text-primary " *ngIf="arr.length != 0 ; then Data ; else noData">
+      bla bla blaa
+      <textarea></textarea>
+    </div>
+    
+    
+    <ng-template #noData>
+        <div class="alert alert-danger">
+            array length = 0
+        </div>
+    </ng-template>
+    
+    
+    <ng-template #Data>
+        <div class="alert alert-primary">
+            array length > 0
+        </div>
+    </ng-template>
+    
+    
+    <button class="btn btn-primary" (click)="flag = !flag ; puchArr()">click</button>
+    
+    

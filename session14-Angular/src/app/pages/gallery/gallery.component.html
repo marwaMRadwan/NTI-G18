@@ -1,0 +1,15 @@
+
+<div class="alert alert-danger" [ngSwitch]="num">
+    <ng-container *ngFor="let number of numberArray ; let i = index">
+        <p *ngSwitchCase="i">num = {{number}}</p>
+    </ng-container>
+
+    <!-- <p *ngSwitchCase="'1'">num = 1</p>
+    <p *ngSwitchCase="'2'">num = 2</p>
+    <p *ngSwitchCase="'3'">num = 3</p>
+    <p *ngSwitchCase="'4'">num = 4</p>
+    <p *ngSwitchCase="'5'">num = 5</p> -->
+    
+    <p *ngSwitchDefault>invalid number</p>
+
+</div>
