@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row mt-3 gy-4">
+        <div class="col-12 col-md-4 " 
+        *ngFor="let blog of blogs">
+            <div class="card" routerLink="/blogs/{{blog.id}}">
+                <div class="card-body">
+                    <h2>{{blog.title}}</h2>
+                    <p>{{blog.body}}</p>
+                    <button class="btn btn-primary"
+                     routerLink="/blogs/{{blog.id}}">Show Single Blog</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

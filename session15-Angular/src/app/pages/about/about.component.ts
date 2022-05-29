@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-about',
@@ -70,9 +72,13 @@ export class AboutComponent implements OnInit {
     "body": "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error"
     }
     ]
-  constructor() { }
+
+    obj:any={}
+  constructor(private activated:ActivatedRoute , public global:GlobalService) { }
 
   ngOnInit(): void {
+    this.obj = this.activated.snapshot.queryParams
+    console.log(this.obj)
   }
 
 }

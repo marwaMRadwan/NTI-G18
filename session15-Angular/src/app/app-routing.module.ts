@@ -7,6 +7,8 @@ import {ContactComponent } from './pages/contact/contact.component'
 import { PostsComponent } from './pages/posts/posts.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { UsersListComponent } from './pages/users-list/users-list.component';
+import { BlogsComponent } from './pages/blogs/blogs.component';
+import { SingleBlogComponent } from './pages/single-blog/single-blog.component';
 
 const routes: Routes = [
   {path:"" , component:HomeComponent},
@@ -15,6 +17,16 @@ const routes: Routes = [
   {path:"posts" , component:PostsComponent},
   {path : "products" , component:ProductsComponent},
   {path : "users" , component:UsersListComponent},
+  {path:"blogs" , children:[
+    // /blogs
+    {path : "" , component : BlogsComponent},
+    // blogs/4
+    {path : ":userId" , component : SingleBlogComponent}
+  ] 
+},
+
+  // {path:"blogs" , component:BlogsComponent},
+  // {path:"blogs/:id" , component:SingleBlogComponent}
 ];
 
 @NgModule({
