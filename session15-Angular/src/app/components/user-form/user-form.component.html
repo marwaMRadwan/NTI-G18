@@ -1,0 +1,15 @@
+<form>
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" class="form-control" [(ngModel)]="model.name" 
+            placeholder="enter your Name" name="name" id="">
+        </div>
+        <div class="col-md-6">
+            <input type="email" class="form-control"  [(ngModel)]="model.email"
+            placeholder="enter your email" name="email" id="">
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary" (click)="handleSubmit()">Submit</button>
+        </div>
+    </div>
+</form>
