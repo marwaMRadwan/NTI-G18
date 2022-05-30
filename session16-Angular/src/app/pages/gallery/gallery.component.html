@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="text-center " *ngIf="loadingStatus ; else data ">
+        <img src="assets/images/loading.jpg" class="img-fluid">
+    </div>
+   <ng-template #data>
+    <div class="row">
+        <div class="col-12 col-md-4" *ngFor="let img of images">
+            <div class="card">
+                <img src="{{img.url}}" alt="" class="img-fluid">
+                <div class="card-body">
+                    <h3>{{img.title}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+   </ng-template>
+</div>

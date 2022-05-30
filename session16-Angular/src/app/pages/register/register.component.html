@@ -1,0 +1,52 @@
+<!-- template driven form -->
+<div class="container">
+    <form #register="ngForm" (ngSubmit)="handleSubmit(register)">
+        <div class="alert alert-primary">
+            values {{register.value | json}} <br>
+            valid {{register.valid}} <br>
+            invalid {{register.invalid}} <br>
+            touched {{register.touched}} <br>
+            submit {{register.submitted}}
+
+        </div>
+        <div class="row gy-4">
+            <div class="col-12 col-md-6">
+                <input type="text" class="form-control" placeholder="enter your Name" [(ngModel)]="model.name"
+                    name="name" #name="ngModel" required minlength="5">
+                <div class="alert alert-danger" *ngIf="register.submitted && name.invalid">
+                    <!-- errors  {{name.errors | json}} <br>
+                   Touched  {{name.touched}} <br>
+                   dirty  {{name.dirty}} <br>
+                   valid  {{name.valid}} <br>
+                   invalid  {{name.invalid}} <br> -->
+                    <div *ngIf="name.errors?.['required']">
+                        name is required
+                    </div>
+                    <div *ngIf="name.errors?.['minlength']">
+                        minLength = 5
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <input type="email" class="form-control" placeholder="enter your email" [(ngModel)]="model.email"
+                    name="email" #email="ngModel" required email>
+                <div class="alert alert-danger" *ngIf="email.invalid && (register.submitted || email.dirty)">
+                    <!-- {{email.errors | json}} -->
+                    <div *ngIf="email.errors?.['required']">
+                        email is required
+                    </div>
+                    <div *ngIf="email.errors?.['email']">
+                        email is invalid
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <input type="password" class="form-control" placeholder="enter your Password"
+                    [(ngModel)]="model.password" name="password" #password="ngModel" required>
+            </div>
+            <div class="col-4">
+                <button class="btn btn-primary">Register</button>
+            </div>
+        </div>
+    </form>
+</div>
