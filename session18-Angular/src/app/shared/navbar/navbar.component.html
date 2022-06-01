@@ -13,6 +13,9 @@
             <a class="nav-link" routerLink="login" *ngIf="!global.isLogIn">login</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" *ngIf="global.isLogIn" routerLink="edit-profile">profile Image</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" *ngIf="global.isLogIn" (click)="handleLogOut()">LogOut</a>
           </li>
        
