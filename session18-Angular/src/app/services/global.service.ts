@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class GlobalService {
   public navFlag:boolean= false
+  public imgUrl = "http://localhost:3000/"
+  public isLogIn : boolean = false
   constructor(private http : HttpClient) { }
 
   login(obj:any) : Observable<any>{

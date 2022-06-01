@@ -8,7 +8,7 @@ import { GlobalService } from 'src/app/services/global.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private global :GlobalService) { }
+  constructor(public global :GlobalService) { }
 
   ngOnInit(): void {
     this.global.loadRoles().subscribe(data=>{

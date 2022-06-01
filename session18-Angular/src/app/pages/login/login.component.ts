@@ -16,7 +16,10 @@ export class LoginComponent implements OnInit {
 
   isSubmitted = false
   errorMsg:any=null
-  constructor(private global : GlobalService , private router : Router) { }
+  constructor(private global : GlobalService , private router : Router) {
+    let token = localStorage.getItem("token")
+    if(token) this.router.navigateByUrl("")
+   }
 
   get email(){return this.loginForm.get("email")}
 
@@ -36,6 +39,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['successLogin'])
           this.global.navFlag = true
           localStorage.setItem("token" , res.access_token)
+          this.global.isLogIn = true
         }
 
         if(res.error){
