@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-4" *ngFor="let provider of providers | paginate: { id: 'showProviders',
+        itemsPerPage: pageSize,
+        currentPage: p,
+        totalItems: total }">
+            <div class="card">
+                <div class="card-body">
+                    <h2>{{provider.name}}</h2>
+                </div>
+            </div>
+        </div>
+        <pagination-controls  id="showProviders"
+                      (pageChange)="pageChanged($event)"
+                      (pageBoundsCorrection)="pageChanged($event)"
+                      [maxSize]="9"
+                      [directionLinks]="true"
+                      [autoHide]="true"
+                      [responsive]="true"
+                      previousLabel="Previous"
+                      nextLabel="Next"
+                     >
+    </pagination-controls>
+    </div>
+</div>

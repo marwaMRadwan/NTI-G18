@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-4" *ngFor="let role of showRoles">
+            <div class="card" routerLink="provider/{{role.slug}}">
+                <div class="card-body">
+                    <h2>{{role.title}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
