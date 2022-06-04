@@ -20,9 +20,15 @@ export class GlobalService {
      this.http.get(`${this.urlPath}loadRoles/1`).subscribe(data=>{
       this.roles = data
      })
+     return this.roles
   }
   // uploadImg(obj:any):Observable<any>{
   //   return this.http.post(`${this.urlPath}StoreAccountImages` , obj)
   // }
+
+
+  getImages():Observable<any>{
+    return this.http.get("https://jsonplaceholder.typicode.com/photos")
+  }
 
 }

@@ -7,10 +7,11 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { PostsComponent } from './pages/posts/posts.component';
+import { ResolveService } from './services/resolve.service';
 
 const routes: Routes = [
   {path:"" , component:HomeComponent},
-  {path:"gallery" , component:GalleryComponent},
+  {path:"gallery" , component:GalleryComponent , resolve:{galleryImages : ResolveService}},
   {path:"login" , component:LoginComponent , 
   canActivate:[CanActivateGuard] , 
   canDeactivate:[CanDeactivateGuard]},
