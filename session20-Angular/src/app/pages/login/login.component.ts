@@ -53,6 +53,16 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  canExit():boolean{
+    if(this.isSubmitted == false && this.loginForm.dirty == true ){
+      alert("please save changes")
+      return true 
+    }
+    else{
+      return false
+    }
+  }
+
 }
 
 
