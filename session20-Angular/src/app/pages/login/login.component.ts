@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
           this.global.navFlag = true
           localStorage.setItem("token" , res.access_token)
           this.global.isLogIn = true
+          this.global.userRole = true
         }
 
         if(res.error){

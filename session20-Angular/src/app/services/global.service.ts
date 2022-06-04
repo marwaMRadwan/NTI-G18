@@ -11,6 +11,7 @@ export class GlobalService {
   public urlPath = "http://dashboard.roshetah.com/api/auth/"
   public isLogIn : boolean = false
   public roles :any
+  public userRole = false
   constructor(private http : HttpClient) { }
 
   login(obj:any) : Observable<any>{
@@ -29,6 +30,13 @@ export class GlobalService {
 
   getImages():Observable<any>{
     return this.http.get("https://jsonplaceholder.typicode.com/photos")
+  }
+
+  authMe():Observable<any>{
+    const obj = {
+      "lang" : 1
+    }
+    return this.http.post("http://dashboard.roshetah.com/api/auth/me" , obj)
   }
 
 }
